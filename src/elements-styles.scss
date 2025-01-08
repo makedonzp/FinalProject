@@ -1,0 +1,77 @@
+@import "./sizes.scss";
+@import "./colors.scss";
+@import "./animations.scss";
+
+@mixin button($background-color: $blue) {
+    display: inline-block;
+
+    font-size: 22px;
+    font-weight: 500;
+    color: $white;
+    background-color: $background-color;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 59px;
+
+    cursor: pointer;
+
+    position: relative;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    @include respond-to(tablet) {
+        font-size: 20px;
+    }
+
+    &:not(:disabled) {
+        &:hover {
+            box-shadow: 0 0 15px 0 transparentize($background-color, 0.5);
+            transition: all .3s;
+        
+            &:before {
+                animation: shine 0.5s 0s linear;
+            }
+        }
+
+        &:active {
+            box-shadow: 0 0 0 0 transparent;
+            transition: box-shadow 0.2s ease-in;
+        }
+        
+        &:before {
+            content: '';
+            display: block;
+            width: 0px;
+            height: 86%;
+            position: absolute;
+            top: 7%;
+            left: 0%;
+            opacity: 0;
+            background: white;
+            box-shadow: 0 0 15px 3px white;
+            transform: skewX(-20deg);
+        }
+    }
+}
+
+@mixin link-button($background-color: $blue) {
+    @include button($background-color);
+
+    span {
+        width: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+}

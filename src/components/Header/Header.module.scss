@@ -1,0 +1,90 @@
+@import "../../colors.scss";
+@import "../../sizes.scss";
+
+.parent {
+    width: $max-content-width;
+    min-width: $min-content-width;
+    height: $header-height;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    .logo {
+        width: 141px;
+        z-index: 3;
+    }
+
+    nav {
+        margin: auto 0;
+    }
+
+    .link {
+        text-decoration: none;
+        color: black;
+        margin: 25px;
+
+        &:hover {
+            color: $white-bg-hover;
+            transition-duration: 0.3s;
+        }
+    }
+
+    .menu {
+        display: none;
+        cursor: pointer;
+    }
+
+    .cross {
+        margin: auto 10px auto 0;
+        z-index: 3;
+    }
+
+    .menu_header_wrapper {
+        width: 100vw;
+        min-width: $min-content-width;
+        max-width: $max-content-width;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    @include respond-to(laptop) {
+        width: calc(100vw - 100px);
+
+        .link {
+            margin: 15px;
+        }
+
+        nav {
+            margin-right: 40px;
+        }
+    }
+
+    @include respond-to(tablet) {
+        position: relative;
+        overflow: auto;
+        width: calc(100vw - 7vw);
+        padding: 0 15px;
+        justify-content: space-between;
+
+        .logo {
+            width: 111px;
+        }
+
+        nav { display: none; }
+        .link { display: none; }
+
+        .menu {
+            position: absolute;
+            display: block;
+            top: 34px;
+            right: 18px;
+        }
+    }
+}
+
+.parent_menu {
+    @extend .parent;
+    
+    position: static;
+}

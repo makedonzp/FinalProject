@@ -1,0 +1,116 @@
+@import "../../colors.scss";
+@import "../../sizes.scss";
+
+.parent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: $main;
+    width: 100vw;
+    height: 100vh;
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 140px;
+        background-color: $main;
+    }
+
+    .link {
+        text-decoration: none;
+        color: white;
+        margin: 12px auto;
+        font-size: 16px;
+        width: 100px;
+
+        &:hover {
+            color: $black-bg-hover;
+            transition-duration: 0.3s;
+        }
+    }
+
+    .buttons_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 75px;
+        background-color: $main;
+    }
+
+    .register_button {
+        font-size: 16px;
+        border: none;
+        background-color: transparent;
+        color: $white;
+        opacity: 0.4;
+    }
+
+    .login_button {
+        width: 80vw;
+        max-width: 300px;
+        height: 52px;
+        margin-top: 20px;
+        border-width: 0;
+        border-radius: 5px;
+        background-color: $azure;
+        font-weight: 500;
+        padding: 5px 10px;
+        font-size: 20px;
+        text-decoration: none;
+        color: $black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .avatar__wrapper {
+        display: flex;
+        flex-direction: column;
+        padding-top: 100px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background-color: $main;
+
+        .username {
+            font-size: 18px;
+            line-height: 17px;
+            opacity: 0.9;
+        }
+
+        .exit_button {
+            font-size: 18px;
+            line-height: 12px;
+            background-color: transparent;
+            border: none;
+            opacity: 0.7;
+            width: 100px;
+            margin: 0 auto;
+            padding-top: 15px;
+            padding-bottom: 25px;
+            cursor: pointer;
+            transition-duration: .3s;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .avatar {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 15px;
+            transform: translateY(-3px);
+            border-radius: 50%;
+        }
+    }
+
+    @include respond-to(tablet) {
+        overflow: auto;
+    }
+}

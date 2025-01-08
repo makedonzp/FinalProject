@@ -1,0 +1,65 @@
+@import "../../sizes.scss";
+
+.content {
+    @include page-content-settings;
+
+    .flex_container {
+        display: flex;
+    }
+
+    .title {
+        font-family: 'Ferry';
+        font-weight: 900;
+        font-size: 40px;
+        line-height: 48px;
+        margin-right: 50px;
+    }
+
+    .picture {
+        margin: -370px 0 100px 120px;
+    }
+
+    @include respond-to(laptop) {
+        .title {
+            font-size: 33px;
+        }
+
+        .picture {
+            margin: -330px 0 70px 3vw;
+            width: $min-content-width * 2;
+        }
+    }
+
+    @include respond-to(tablet) {
+        .flex_container {
+            flex-direction: column;
+        }
+
+        .title {
+            font-size: 22px;
+            line-height: 26px;
+            margin-bottom: 126px;
+        }
+
+        .picture {
+            margin: 50px 25vw 80px;
+            justify-self: center;
+        }
+    }
+
+    @include respond-to(mobile) {
+        .picture {
+            margin: 50px 0 80px -20px;
+            min-width: $min-content-width;
+        }
+    }
+
+    @include respond-to(mini-mobile) {
+        .flex_container {
+            .title {
+                text-align: center;
+                margin: 0 auto 126px;
+            }
+        }
+    }
+}

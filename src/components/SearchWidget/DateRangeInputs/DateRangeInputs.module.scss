@@ -1,0 +1,115 @@
+@import "../../../colors.scss";
+@import "../../../animations.scss";
+@import "../../../sizes.scss";
+
+.rdp {
+    --rdp-cell-size: 40px;
+    --rdp-accent-color: black;
+}
+
+.disclosure_wrapper {
+    position: relative;
+    margin: 0;
+
+    .disclosure_button {
+        position: relative;
+        width: 176px;
+        height: 43px;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.03em;
+        background-color: white;
+        border: 1px solid #C7C7C7;
+        border-radius: 5px;
+        text-align: left;
+        text-indent: 15px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+
+        &__error {
+            @extend .disclosure_button;
+
+            color: $error;
+            border: 1px solid $error;
+            box-shadow: 0px 0px 20px rgba(255, 89, 89, 0.2);
+        }
+
+        .disclosure_button__wrapper {
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                font-size: 14px;
+                opacity: 0.4;
+                margin: 0 auto;
+                transition-duration: 1s;
+            }
+
+            .date_span {
+                opacity: 1;
+                margin: 0;
+            }
+
+            .date_rect {
+                margin: 4px 5px 0 0;
+                transition-duration: .2s;
+            }
+            
+            .date_rect__active {
+                @extend .date_rect;
+                transform: matrix(0, 1, 1, 0, 0, 0);
+            }
+        }
+    }
+
+    .disclosure_panel {
+        position: absolute;
+        margin-top: 3px;
+        width: auto;
+        border: 1px solid #C7C7C7;
+        border-radius: 5px;
+        background-color: white;
+        list-style: none;
+        padding: 0;
+        z-index: 1;
+        opacity: 0.97;
+        animation: show 0.2s ease;
+        top: -70px;
+        left: 180px;
+    }
+}
+
+@include respond-to(tablet) {
+    .disclosure_wrapper {
+        position: relative;
+        margin-right: 10px;
+    }
+}
+
+@include respond-to(mobile) {
+    .disclosure_wrapper {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-right: 0;
+
+        .disclosure_button {
+            width: 100%;
+
+            .disclosure_button__wrapper {
+                width: 100%;
+
+                .date_rect__active {
+                    transform: matrix(1, 0, 0, -1, 0, 0);
+                }
+            }
+        }
+        
+        .disclosure_panel {
+            position: static;
+            width: 100%;
+            border: none;
+            border-radius: 0;
+            margin: 0 auto;
+            animation: show ease .3s;
+        }
+    }
+}

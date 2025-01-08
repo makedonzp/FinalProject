@@ -1,0 +1,256 @@
+@import "../../colors.scss";
+@import "../../elements-styles.scss";
+
+.parent {
+    position: relative;
+    width: 415px;
+    height: 540px;
+    background-color: $white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 0 9px 43px;
+
+    h1 {
+        font-family: 'Inter';
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 36px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    span {
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 400;
+    }
+
+    .horizontal {
+        display: flex;
+        position: relative;
+        border-top-right-radius: 7px;
+        border-top-left-radius: 7px;
+        padding: 30px;
+
+        .vertical {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .horizontal__black {
+        @extend .horizontal;
+
+        background-color: $black;
+
+        h1, span {
+            color: $white;
+        }
+    }
+
+    .horizontal__yellow {
+        @extend .horizontal;
+        
+        background-color: $yellow;
+    }
+
+    .horizontal__azure {
+        @extend .horizontal;
+        
+        background-color: $azure;
+    }
+
+    .current_tariff {
+        position: absolute;
+        width: 134px;
+        height: 24px;
+        top: 145px;
+        left: 271px;
+        background-color: #3BA5E0;
+        border-radius: 10px;
+        text-align: center;
+
+        span {
+            font-weight: 400;
+            font-size: 14px;
+            color: $white;
+        }
+
+        &.__no {
+            display: none;
+        }
+    }
+
+    .price__wrapper {
+        margin: 33px 30px 30px;
+
+        .discounted_price {
+            font-weight: 500;
+            font-size: 30px;
+            margin-right: 19px;
+            vertical-align: middle;
+        }
+
+        .price {
+            font-weight: 500;
+            font-size: 25px;
+            line-height: 30px;
+            text-decoration-line: line-through;
+            opacity: 0.5;
+            vertical-align: middle;
+        }
+
+        .price_desc {
+            display: block;
+            width: 380px;
+            font-size: 18px;
+            line-height: 22px;
+            margin-top: 10px;
+        }
+    }
+
+    .about__wrapper {
+        position: absolute;
+        top: 54%;
+        left: 7%;
+        
+        .about__title {
+            font-weight: 500;
+            font-size: 20px;
+        }
+
+        span {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+            letter-spacing: 0.01em;
+
+            &:nth-of-type(2) {
+                margin-top: 10px;
+            }
+        }
+
+        .about__svg {
+            margin-right: 2px;
+            margin-bottom: -3px;
+        }
+    }
+
+    .button {
+        @include button;
+
+        position: absolute;
+        top: 85%;
+        left: 5%;
+        width: 90%;
+        font-size: 20px;
+    }
+
+    .button__current {
+        @include button($black-bg-hover);
+
+        color: $black;
+        position: absolute;
+        top: 85%;
+        left: 5%;
+        width: 90%;
+        font-size: 20px;
+    }
+
+    @include respond-to(tablet) {
+        width: 410px;
+        margin: 0 auto 43px;
+
+        span {
+            font-size: 18px;
+        }
+
+        .about__wrapper {
+            left: 6.5%;
+
+            .about__title {
+                font-size: 18px;
+            }
+            
+            span {
+                font-size: 16px;
+            }
+        }
+
+        .button {
+            font-size: 18px;
+        }
+
+        .current_tariff {
+            left: 260px;
+        }
+    }
+
+    @include respond-to(mobile) {
+        width: 335px;
+        height: 512px;
+
+        .horizontal {
+            padding: 24px;
+        }
+
+        .vertical {
+            span {
+                width: 310px;
+            }
+        }
+
+        .about__wrapper {
+            span {
+                letter-spacing: 0;
+            }
+        }
+
+        .price__wrapper {
+            margin: 30px 24px 30px;
+
+            .price_desc {
+                width: 280px;
+            }
+        }
+
+        .current_tariff {
+            display: none;
+        }
+    }
+
+    @include respond-to(mini-mobile) {
+        .horizontal, .vertical {
+            margin: 0 auto;
+
+            span {
+                width: 110%;
+            }
+        }
+    }
+}
+
+%parent__current {
+    @extend .parent;
+
+    box-sizing: border-box;
+    border: 2px solid;
+}
+
+.parent__current_yellow {
+    @extend %parent__current;
+
+    border-color: $yellow;
+}
+
+.parent__current_azure {
+    @extend %parent__current;
+
+    border-color: $azure;
+}
+
+.parent__current_black {
+    @extend %parent__current;
+
+    border-color: $black;
+}

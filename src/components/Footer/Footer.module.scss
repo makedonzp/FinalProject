@@ -1,0 +1,70 @@
+@import "../../colors.scss";
+@import "../../sizes.scss";
+
+.parent {
+    width: auto;
+    height: $footer-height;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $main;
+
+    .footer_wrapper {
+        width: calc(100vw - 100px);
+        max-width: $max-content-width;
+        min-width: $min-content-width;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        
+        .logo {
+            width: 137px;
+            height: 137px;
+        }
+
+        .text {
+            margin: auto 0;
+            color: white;
+            text-align: right;
+
+            p {
+                line-height: 16.94px;
+                margin-bottom: 21px;
+            }
+
+            span {
+                font-size: 12px;
+            }
+        }
+
+        @include respond-to(tablet) {
+            width: calc(100vw - 7vw);
+
+            .logo {
+                width: 111px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+        @include respond-to(mobile) {
+            .logo {
+                margin-top: -45px;
+            }
+        }
+
+        @include respond-to(mini-mobile) {
+            .text {
+                p {
+                    font-size: 10px;
+                }
+
+                span {
+                    font-size: 8px;
+                }
+            }
+        }
+    }
+}

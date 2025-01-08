@@ -1,0 +1,229 @@
+@import "../../sizes.scss";
+@import "../../elements-styles.scss";
+
+.content {
+    @include page-content-settings;
+
+    h1 {
+        margin: 12px 0 30px;
+        font-family: 'Ferry';
+        font-weight: 900;
+        font-size: 60px;
+        line-height: 72px;
+        letter-spacing: 0.01em;
+    }
+
+    h2 {
+        font-family: 'Ferry';
+        font-weight: 900;
+        font-size: 45px;
+        line-height: 54px;
+    }
+
+    .section1 {
+        .section1__horizontal {
+            display: flex;
+            position: relative;
+
+            .section1_vertical {
+                display: flex;
+                flex-direction: column;
+            }
+
+            span {
+                display: block;
+                width: 550px;
+                font-size: 20px;
+                line-height: 24px;
+            }
+        }
+
+        .picture1 {
+            z-index: -1;
+            position: absolute;
+            left: 690px;
+        }
+
+        .section1__button {
+            @include link-button;
+
+            margin-top: 70px;
+            width: 335px;
+        }
+
+        .section1__button__unvisible {
+            @extend .section1__button;
+
+            opacity: 0;
+            cursor: default;
+        }
+    }
+
+    .section2 {
+        margin-top: 200px;
+
+        .picture2 {
+            margin-top: 60px;
+        }
+    }
+    
+    .section3 {
+        margin-top: 107px;
+
+        .section3__svg {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 5%;
+            left: 73%;
+        }
+
+        .section3__svg2 {
+            @extend .section3__svg;
+            width: 130px;
+            height: 130px;
+            top: -4%;
+            left: 67%;
+        }
+
+        .section3__svg3 {
+            @extend .section3__svg;
+            top: 13%;
+            left: 75%;
+        }
+
+        .section3__tariffs_wrapper {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 70px;
+            margin-bottom: 110px;
+        }
+    }
+
+    @include respond-to(laptop) {
+        .section1 {
+            .picture1 {
+                left: 56vw;
+                width: 40vw;
+            }
+        }
+    }
+
+    @include respond-to(tablet) {
+        h1 {
+            margin-top: 0;
+            font-size: 44px;
+            line-height: 44px;
+            letter-spacing: 0.005em;
+        }
+
+        h2 {
+            font-size: 40px;
+        }
+
+        .section1 {
+            .section1__horizontal {
+                flex-direction: column;
+
+                span {
+                    width: 500px;
+                    font-size: 18px;
+                    line-height: 22px;
+                }
+            }
+
+            .picture1 {
+                position: static;
+                margin: -90px auto -60px auto;
+                width: 347px;
+            }
+
+            .section1__button {
+                margin-top: 32px;
+                width: 100%;
+            }
+        }
+
+        .section2 {
+            margin-top: -40px;
+
+            .picture2 {
+                width: 850px;
+                margin-top: -30px;
+            }
+        }
+
+        .section3 {
+            margin-top: -30px;
+
+            .section3__tariffs_wrapper {
+                flex-direction: column;
+                justify-content: center;
+                margin-top: 37px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    @include respond-to(mobile) {
+        h1 {
+            font-size: 28px;
+            line-height: 34px;
+        }
+
+        h2 {
+            width: 260px;
+            font-size: 28px;
+            line-height: 34px;
+        }
+
+        .section1 {
+            .section1__horizontal span {
+                width: auto;
+            }
+        }
+
+        .section2 {
+            margin-top: -40px;
+        }
+
+        .section3 {
+            .section3__svg {
+                width: 59px;
+                top: -7%;
+                left: 80%;
+            }
+    
+            .section3__svg2 {
+                width: 85px;
+                top: -15%;
+                left: 75%;
+            }
+    
+            .section3__svg3 {
+                width: 73px;
+                top: -6%;
+                left: 75%;
+            }
+        }
+    }
+
+    @include respond-to(mini-mobile) {
+        h1 {
+            text-align: center;
+            margin: 0 auto 30px;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .section3 {
+            .section3__svg, .section3__svg2, .section3__svg3 {
+                display: none;
+            }
+        }
+    }
+}

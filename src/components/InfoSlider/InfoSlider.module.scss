@@ -1,0 +1,110 @@
+@import "../../elements-styles.scss";
+@import "../../animations.scss";
+
+.slider {
+    margin-top: 70px;
+
+    .slider__item {
+        margin: 15px;
+
+        .slider__item__wrapper {
+            width: 400px;
+            height: 225px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+
+            @include respond-to(laptop) {
+                margin: 0 auto;
+            }
+
+            .slider__svg {
+                margin-top: 22px;
+            }
+            
+            span {
+                display: block;
+                width: 350px;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 22px;
+                margin-top: 12px;
+            }
+        }
+    }
+    
+    .slider__arrow_prev {
+        width: 39px;
+        height: 39px;
+        transform: translateY(-25px) translateX(-7px);
+
+        &:hover {
+            animation: flick ease-in-out .3s;
+        }
+    }
+
+    .slider__arrow_next {
+        @extend .slider__arrow_prev;
+
+        transform: rotate(180deg) translateY(25px) translateX(13px);
+    }
+
+    @include respond-to(laptop) {
+        margin: 50px 10px 0;
+    }
+
+    @include respond-to(tablet) {
+        margin: 30px 30px 0;
+
+        .slider__item {
+            .slider__item__wrapper {
+                width: 330px;
+                height: 188px;
+
+                .slider__svg {
+                    margin-top: 10px;
+                    width: 58px;
+                }
+
+                span {
+                    width: 300px;
+                }
+            }
+        }
+    }
+
+    @include respond-to(mobile) {
+        margin: 30px 10px 0;
+        min-width: $min-content-width;
+
+        .slider__item {
+            .slider__item__wrapper {
+                width: 260px;
+                height: 190px;
+                transform: translateX(-15px);
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+
+                span {
+                    width: 260px;
+                }
+            }
+        }
+    }
+
+    @include respond-to(mini-mobile) { 
+        margin: 30px 30px 0;
+
+        .slider__item {
+            .slider__item__wrapper {
+                width: 200px;
+                height: 240px;
+                padding: 7px;
+                box-shadow: none;
+
+                span {
+                    width: 200px;
+                }
+            }
+        }
+    }
+}

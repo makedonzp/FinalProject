@@ -1,0 +1,45 @@
+$smallest: 375px;
+$tablet-min: 768px;
+$laptop-min: 1024px;
+$laptopL-min: 1440px;
+$header-height: 97px;
+$footer-height: 137px;
+$starting-margin: 57px;
+$starting-margin_mobile: 29px;
+$min-content-width: 200px;
+$max-content-width: 1300px;
+$min-content-height: calc(100vh - $header-height - $footer-height - $starting-margin);
+
+@mixin page-content-settings {
+  max-width: $max-content-width;
+  min-width: $min-content-width;
+  min-height: $min-content-height;
+  margin: $starting-margin auto 0;
+  padding: 0 20px;
+  
+  @include respond-to(tablet) {
+    margin: $starting-margin_mobile auto 0;
+  }
+
+  @include respond-to(mini-mobile) {
+    padding: 0 3px;
+  }
+}
+
+@mixin respond-to($media) {
+  @if $media == mini-mobile {
+    @media only screen and (max-width: ($smallest - 1)) { @content; }
+  }
+  @else if $media == mobile {
+    @media only screen and (max-width: ($tablet-min - 1)) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (max-width: ($laptop-min - 1)) { @content; }
+  }
+  @else if $media == laptop {
+    @media only screen and (max-width: ($laptopL-min - 1)) { @content; }
+  }
+  @else if $media == over {
+    @media only screen and (min-width: ($laptopL-min)) { @content; }
+  }
+}

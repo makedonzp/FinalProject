@@ -1,0 +1,331 @@
+@import "../../colors.scss";
+@import "../../animations.scss";
+@import "../../elements-styles.scss";
+@import "../../sizes.scss";
+
+.parent {
+    width: 872px;
+    height: 543px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 47px 0 64px;
+
+    .wrapper {
+        position: relative;
+        display: flex;
+        padding: 21px 44px 32px 39px;
+
+        span {
+            font-size: 18px;
+            letter-spacing: 0.03em;
+        }
+
+        .error_label {
+            position: absolute;
+            font-weight: 400;
+            font-size: 14px;
+            color: $error;
+            top: 112px;
+            left: 55px;
+            animation: show ease-out .2s;
+
+            &[target="docsCount"] {
+                @extend .error_label;
+                top: 336px;
+                left: 85px;
+            }
+
+            &[target="dateRange"] {
+                @extend .error_label;
+                top: 458px;
+                left: 120px;
+            }
+        }
+        
+        sup {
+            font-size: 25px;
+            vertical-align: baseline;
+            position: relative;
+            line-height: 1;
+            bottom: 2px;
+        }
+
+        .sup__error {
+            color: $error;
+        }
+
+        .inputs {
+            display: flex;
+            flex-direction: column;
+
+            input {
+                box-sizing: border-box;
+                width: 242px;
+                height: 43px;
+                border: 1px solid #C7C7C7;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+                border-radius: 5px;
+                margin: 20px 0 30px;
+                text-indent: 15px;
+
+                &::placeholder {
+                    text-align: center;
+                    text-indent: 0;
+                    font-size: 14px;
+                    letter-spacing: 0.03em;
+                    color: $gray;
+                    opacity: 0.4;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .input__error {
+                @extend input;
+                color: $error;
+                border-color: $error;
+                box-shadow: 0px 0px 20px rgba(255, 89, 89, 0.2);
+            }
+
+            .range_inputs {
+                display: flex;
+                flex-direction: column;
+            
+                .range_inputs__wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 372px;
+                    margin-top: 20px;
+                }
+            }
+        }
+
+        .checkboxes {
+            margin-left: 9px;
+            margin-top: 23px;
+
+            .checkbox__wrapper {
+                margin-bottom: 17px;
+
+                input {
+                    vertical-align: middle;
+                }
+
+                label {
+                    font-size: 18px;
+                    letter-spacing: 0.03em;
+                }
+            }
+        }
+
+        .listbox_wrapper {
+            position: relative;
+            margin: 20px 0;
+
+            .listbox_button {
+                position: relative;
+
+                width: 242px;
+                height: 43px;
+                font-size: 14px;
+                line-height: 17px;
+                letter-spacing: 0.03em;
+                background-color: white;
+                border: 1px solid #C7C7C7;
+                border-radius: 5px;
+                text-align: left;
+                text-indent: 15px;
+                box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+
+                .listbox_button__wrapper {
+                    display: flex;
+                    justify-content: space-between;
+                    
+                    .rect {
+                        margin: 4px 5px 0 0;
+                        transition-duration: .2s;
+                    }
+
+                    .rect__active {
+                        @extend .rect;
+                        transform: matrix(1, 0, 0, -1, 0, 0);
+                    }
+                }
+            }
+
+            .listbox_options {
+                position: absolute;
+                margin-top: 3px;
+                width: 220px;
+                border: 1px solid #C7C7C7;
+                border-radius: 5px;
+                background-color: white;
+                list-style: none;
+                padding-left: 20px;
+                z-index: 1;
+                opacity: 0.97;
+                animation: show 0.2s ease;
+            }
+
+            .listbox_option {
+                height: 33px;
+                margin-bottom: 5px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                border-bottom: 1px solid lightgray;
+                transition-duration: .3s;
+
+                &:hover {
+                    scale: 1.05;
+                    border-bottom-color: $main;
+                    margin-right: 5px;
+                }
+
+                span {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .button_wrapper {
+            position: absolute;
+            top: 435px;
+            left: 520px;
+
+            .search_button {
+                @include button;
+
+                width: 305px;
+                height: 59px;
+                margin-bottom: 10px;
+            }
+
+            span {
+                display: block;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 17px;
+                letter-spacing: 0.03em;
+                color: $gray;
+            }
+        }
+    }
+
+    @include respond-to(laptop) {
+        margin: 30px auto 0;
+    }
+
+    @include respond-to(tablet) {
+        width: auto;
+        height: 543px;
+        margin: 21px 0 0;
+
+        .wrapper {
+            padding: 21px 20px 32px 30px;
+
+            .error_label {
+                top: 112px;
+                left: 47px;
+    
+                &[target="docsCount"] {
+                    top: 336px;
+                    left: 78px;
+                }
+    
+                &[target="dateRange"] {
+                    top: 458px;
+                    left: 110px;
+                }
+            }
+
+            .inputs {
+                .range_inputs {
+                    .range_inputs__wrapper {
+                        justify-content: start;
+                    }
+                }
+            }
+
+            .checkboxes {
+                margin-left: auto;
+                margin-right: 10px;
+            }
+
+            .button_wrapper {
+                left: 54vw;
+            }
+        }
+    }
+
+    @include respond-to(mobile) {
+        width: 100vw;
+        transform: translateX(-21px);
+        height: auto;
+
+        .wrapper {
+            flex-direction: column;
+            padding: 21px 14px 32px;
+
+            .error_label {
+                position: static;
+                margin: -23px auto 6px;
+
+                &[target="dateRange"] {
+                    margin: -15px auto -2px;
+                }
+            }
+
+            .inputs {
+                width: 100%;
+                margin: 0 auto;
+
+                input {
+                    width: auto;
+                }
+
+                .range_inputs {
+                    .range_inputs__wrapper {
+                        width: 100%;
+                        flex-direction: column;
+                    }
+                }
+            }
+
+            .checkboxes {
+                display: none;
+            }
+
+            .listbox_wrapper {
+                .listbox_button {
+                    width: 100%;
+                }
+            }
+
+            .button_wrapper {
+                position: static;
+                margin: 20px auto 7px;
+
+                .search_button {
+                    width: 335px;
+                }
+            }
+        }
+    }
+
+    @include respond-to(mini-mobile) {
+        min-width: $min-content-width;
+        transform: none;
+
+        .wrapper {
+            .button_wrapper {
+                .search_button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

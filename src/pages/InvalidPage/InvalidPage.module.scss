@@ -1,0 +1,26 @@
+@import "../../sizes.scss";
+
+.content {
+    @include page-content-settings;
+
+    h1 {
+        font-family: "Ferry";
+        font-size: 40px;
+        margin: 0 auto 30px;
+    }
+
+    @include respond-to(tablet) {
+        h1 {
+            width: 300px;
+            text-align: center;
+        }
+    }
+
+    @include respond-to(mini-mobile) {
+        h1 {
+            width: 200px;
+            font-size: 30px;
+            margin-bottom: 70px;
+        }
+    }
+}
